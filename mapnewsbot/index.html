@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание карт онлайн</title>
+    
+    <!-- Подключение CSS файлов -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+    
+    <!-- Подключение Leaflet и других библиотек -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/leaflet-image@0.4.0/leaflet-image.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">/m</div>
+            <h1 class="title">создание карт онлайн</h1>
+        </div>
+        
+        <input type="text" class="search-input" placeholder="Введите текст...">
+        
+        <div class="tools-section">
+            <div class="tools-container">
+                <div class="tool-item">
+                    <button class="tool-button">
+                        <div class="tool-icon"><i class="fi fi-rr-draw-square"></i></div>
+                    </button>
+                    <div class="tool-name">Полигоны</div>
+                </div>
+                
+                <div class="tool-item">
+                    <button class="tool-button">
+                        <div class="tool-icon"><i class="fi fi-rr-bullet"></i></div>
+                    </button>
+                    <div class="tool-name">Точки</div>
+                </div>
+                
+                <div class="tool-item">
+                    <button class="tool-button">
+                        <div class="tool-icon"><i class="fi fi-rr-plus-small"></i></div>
+                    </button>
+                    <div class="tool-name">Ещё..</div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Масштаб</h2>
+            
+            <div class="tools-container" id="scale-tools">
+                <div class="tool-item">
+                    <button class="tool-button" data-zoom="3">
+                        <div class="tool-icon"><i class="fi fi-rr-earth-americas"></i></div>
+                    </button>
+                    <div class="tool-name">Страна</div>
+                </div>
+                
+                <!-- Кнопка региона -->
+                <div class="tool-item">
+                    <button class="tool-button" data-zoom="6">
+                        <div class="tool-icon"><i class="fi fi-rr-object-subtract"></i></div>
+                    </button>
+                    <div class="tool-name">Регион</div>
+                </div>
+                
+                <!-- Кнопка города -->
+                <div class="tool-item">
+                    <button class="tool-button" data-zoom="10">
+                        <div class="tool-icon"><i class="fi fi-rs-building"></i></div>
+                    </button>
+                    <div class="tool-name">Город</div>
+                </div>
+                
+                <div class="tool-item">
+                    <button class="tool-button" data-zoom="15">
+                        <div class="tool-icon"><i class="fi fi-rr-bench-tree"></i></div>
+                    </button>
+                    <div class="tool-name">Улица</div>
+                </div>
+                
+                <div class="tool-item">
+                    <button class="tool-button">
+                        <div class="tool-icon"><i class="fi fi-rr-plus-small"></i></div>
+                    </button>
+                    <div class="tool-name">Ещё..</div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Дизайн</h2>
+            
+            <div class="tools-container" id="design-tools">
+                <div class="tool-item">
+                    <button class="tool-button" data-style="news">
+                        <div class="tool-icon"></div>
+                    </button>
+                    <div class="tool-name">Новости</div>
+                </div>
+                
+                <div class="tool-item">
+                    <button class="tool-button" data-style="ria">
+                        <div class="tool-icon"></div>
+                    </button>
+                    <div class="tool-name">РИА</div>
+                </div>
+                
+                <div class="tool-item">
+                    <button class="tool-button" data-style="m24">
+                        <div class="tool-icon"></div>
+                    </button>
+                    <div class="tool-name">М24</div>
+                </div>
+                
+                <div class="tool-item">
+                    <button class="tool-button" data-style="rbc">
+                        <div class="tool-icon"></div>
+                    </button>
+                    <div class="tool-name">РБК</div>
+                </div>
+                
+                <div class="tool-item">
+                    <button class="tool-button" data-style="dark">
+                        <div class="tool-icon"><i class="fi fi-rr-plus-small"></i></div>
+                    </button>
+                    <div class="tool-name">Ещё..</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        
+        <!-- Список объектов на карте -->
+        <div class="objects-container">
+            <h2 class="objects-title">Объекты</h2>
+            <div class="objects-list" id="objects-list">
+                <!-- Здесь будут отображаться объекты -->
+                <div class="objects-empty" id="objects-empty">Добавьте объекты на карту</div>
+                <!-- Пример объекта (будет скрыт по умолчанию) -->
+                <div class="object-item" style="display: none;">
+                    <div class="object-number">1</div>
+                    <div class="object-name">Москва</div>
+                    <div class="object-region">Московская обл.</div>
+                    <div class="object-type">точка</div>
+                    <button class="object-remove">×</button>
+                </div>
+            </div>
+            <button class="clear-objects" id="clear-objects" style="display: none;">очистить данные</button>
+        </div>
+        
+        <!-- Кнопка сохранения карты -->
+        <button class="save-button" id="save-map">сохранить карту</button>
+    </div>
+    
+    <div class="footer">
+        <a href="index.html" class="footer-button" id="home-button">
+            <div class="footer-icon"><i class="fi fi-rr-home"></i></div>
+            <span class="footer-text">Главная</span>
+        </a>
+        <a href="design.html" class="footer-button" id="design-button">
+            <div class="footer-icon"><i class="fi fi-rr-brush"></i></div>
+            <span class="footer-text">Дизайн</span>
+        </a>
+        <a href="#" class="footer-button" id="history-button">
+            <div class="footer-icon"><i class="fi fi-rr-time-past"></i></div>
+            <span class="footer-text">История</span>
+        </a>
+    </div>
+    
+    <!-- Подключение JavaScript файлов -->
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

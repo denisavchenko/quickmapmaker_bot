@@ -1,0 +1,570 @@
+:root {
+    --primary-color: #3366FF;
+    --background-color: #000000;
+    --text-color: #FFFFFF;
+    --secondary-bg-color: #1A1A1A;
+    --button-bg-color: #1A1A1A;
+    --button-active-bg-color: #3366FF;
+    --button-text-color: #FFFFFF;
+    --map-bg-color: #1A1A1A;
+    --water-color: #00D1FF;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 100%;
+    padding: 15px;
+    padding-bottom: 80px; /* Для нижнего меню */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #1A1A1A;
+    color: var(--text-color);
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.tools-section {
+    margin-bottom: 20px;
+}
+
+.tools-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 60px;
+}
+
+.tool-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: var(--button-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--button-text-color);
+    border: none;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.tool-button.active {
+    background-color: var(--button-active-bg-color);
+}
+
+.tool-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.tool-name {
+    font-size: 12px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+.map-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Это создаст квадратный контейнер */
+    background-color: var(--map-bg-color);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Стили для списка объектов */
+.objects-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.objects-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.objects-list {
+    background-color: var(--secondary-bg-color);
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.objects-empty {
+    color: #888;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.object-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+.object-item:last-child {
+    border-bottom: none;
+}
+
+.object-number {
+    width: 30px;
+    color: #888;
+}
+
+.object-name {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.object-region {
+    color: #888;
+    padding: 0 10px;
+}
+
+.object-type {
+    color: #888;
+    width: 60px;
+    text-align: center;
+}
+
+.object-remove {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.clear-objects {
+    text-align: center;
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Стили для кнопки сохранения */
+.save-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #333;
+    z-index: 1000;
+}
+
+.footer-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    text-decoration: none;
+    width: 50%;
+    height: 100%;
+}
+
+.footer-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-icon i {
+    font-size: 20px; /* Размер иконки */
+}
+
+.footer-text {
+    font-size: 12px;
+}
+
+:root {
+    --primary-color: #3366FF;
+    --background-color: #000000;
+    --text-color: #FFFFFF;
+    --secondary-bg-color: #1A1A1A;
+    --button-bg-color: #1A1A1A;
+    --button-active-bg-color: #3366FF;
+    --button-text-color: #FFFFFF;
+    --map-bg-color: #1A1A1A;
+    --water-color: #00D1FF;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 100%;
+    padding: 15px;
+    padding-bottom: 80px; /* Для нижнего меню */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #1A1A1A;
+    color: var(--text-color);
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.tools-section {
+    margin-bottom: 20px;
+}
+
+.tools-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 60px;
+}
+
+.tool-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: var(--button-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--button-text-color);
+    border: none;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.tool-button.active {
+    background-color: var(--button-active-bg-color);
+}
+
+.tool-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.tool-name {
+    font-size: 12px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+.map-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Это создаст квадратный контейнер */
+    background-color: var(--map-bg-color);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Стили для списка объектов */
+.objects-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.objects-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.objects-list {
+    background-color: var(--secondary-bg-color);
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.objects-empty {
+    color: #888;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.object-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+.object-item:last-child {
+    border-bottom: none;
+}
+
+.object-number {
+    width: 30px;
+    color: #888;
+}
+
+.object-name {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.object-region {
+    color: #888;
+    padding: 0 10px;
+}
+
+.object-type {
+    color: #888;
+    width: 60px;
+    text-align: center;
+}
+
+.object-remove {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.clear-objects {
+    text-align: center;
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Стили для кнопки сохранения */
+.save-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #333;
+    z-index: 1000;
+}
+
+.footer-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    text-decoration: none;
+    width: 50%;
+    height: 100%;
+}
+
+.footer-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-icon i {
+    font-size: 20px; /* Размер иконки */
+}
+
+.footer-text {
+    font-size: 12px;
+}
+
+.tool-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.tool-icon i {
+    font-size: 24px; /* Размер иконки */
+}
+.tool-button:active {
+    transform: scale(0.90);
+}
+
+.save-button:active {
+    transform: scale(0.98);
+}
+
+.footer-button:active {
+    transform: scale(0.95);
+}
