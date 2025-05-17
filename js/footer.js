@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="footer-icon"><i class="fi fi-rr-brush"></i></div>
             <span class="footer-text">Дизайн</span>
         </a>
-        <a href="#" class="footer-button" id="history-button">
+        <a href="history.html" class="footer-button" id="history-button">
             <div class="footer-icon"><i class="fi fi-rr-time-past"></i></div>
             <span class="footer-text">История</span>
         </a>

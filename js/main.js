@@ -873,3 +873,18 @@ function getRegionBoundary(regionName) {
             return null;
         });
 }
+
+function clearMapObjects() {
+    // Удаляем все объекты с карты
+    mapObjects.forEach(obj => {
+        if (obj.mapObject) {
+            map.removeLayer(obj.mapObject);
+        }
+    });
+    
+    // Очищаем массив объектов
+    mapObjects = [];
+    
+    // Обновляем список объектов
+    updateObjectsList();
+}
