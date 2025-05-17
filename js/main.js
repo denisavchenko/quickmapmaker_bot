@@ -55,7 +55,11 @@ var MapStorage = {
                 name: obj.name,
                 region: obj.region,
                 type: obj.type,
-                coordinates: obj.coordinates
+                coordinates: obj.coordinates,
+                fillColor: obj.fillColor || (obj.mapObject ? obj.mapObject.options.fillColor : '#3366FF'),
+                strokeColor: obj.strokeColor || (obj.mapObject ? obj.mapObject.options.color : '#000000'),
+                fillOpacity: obj.fillOpacity || (obj.mapObject ? obj.mapObject.options.fillOpacity : 0.3),
+                weight: obj.weight || (obj.mapObject ? obj.mapObject.options.weight : 2)
             };
         });
         
@@ -333,7 +337,32 @@ function loadSavedObjects() {
                 addMarkerToMap(coordinates, obj.name, obj.region);
             } else if (obj.type === 'polygon') {
                 // Для полигонов
-                addPolygonToMap(obj.coordinates, obj.name, obj.region);
+                const polygon = L.polygon(obj.coordinates, {
+                    color: obj.strokeColor || '#3366FF',
+                    fillColor: obj.fillColor || '#3366FF',
+                    fillOpacity: obj.fillOpacity || 0.3,
+                    weight: obj.weight || 2
+                }).addTo(map);
+                
+                // Создаем объект для хранения данных
+                const newObj = {
+                    id: obj.id || objectCounter++,
+                    mapObject: polygon,
+                    name: obj.name || 'Полигон',
+                    region: obj.region || 'Регион',
+                    type: 'polygon',
+                    coordinates: obj.coordinates,
+                    fillColor: obj.fillColor,
+                    strokeColor: obj.strokeColor,
+                    fillOpacity: obj.fillOpacity,
+                    weight: obj.weight
+                };
+                
+                // Добавляем объект в массив
+                mapObjects.push(newObj);
+                
+                // Добавляем объект в список
+                addObjectToList(newObj);
             }
         });
     }
@@ -430,11 +459,11 @@ function saveMapSettings() {
 }
 
 // Функция для добавления полигона на карту
-function addPolygonToMap(coordinates, name, region) {
+function addPolygonToMap(coordinates, name, region, fillColor, strokeColor) {
     // Создаем полигон
     const polygon = L.polygon(coordinates, {
-        color: '#3366FF',
-        fillColor: '#3366FF',
+        color: strokeColor || '#3366FF',
+        fillColor: fillColor || '#3366FF',
         fillOpacity: 0.3,
         weight: 2
     }).addTo(map);
@@ -446,7 +475,9 @@ function addPolygonToMap(coordinates, name, region) {
         name: name || 'Полигон ' + objectCounter,
         region: region || 'Регион',
         type: 'polygon',
-        coordinates: coordinates
+        coordinates: coordinates,
+        fillColor: fillColor || '#3366FF',
+        strokeColor: strokeColor || '#3366FF'
     };
     
     // Добавляем объект в массив
