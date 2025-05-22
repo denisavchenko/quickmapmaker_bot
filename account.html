@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    
+    <!-- Подключение CSS файлов -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">/m</div>
+            <h1 class="title">создание карт онлайн</h1>
+        </div>
+        
+        <div class="auth-container">
+            <h2 class="auth-title">Личный кабинет</h2>
+            
+            <!-- Форма авторизации -->
+            <div id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Логин:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="button" id="login-btn" class="auth-btn">Войти</button>
+                <div id="error-message" class="error-message">Неверный логин или пароль</div>
+            </div>
+            
+            <!-- Информация о пользователе (после авторизации) -->
+            <div id="user-info" class="user-info">
+                <h3>Добро пожаловать, <span id="user-name"></span>!</h3>
+                <p>Вы успешно авторизованы в системе.</p>
+                <button id="logout-btn" class="logout-btn">Выйти</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Подключение JavaScript файлов -->
+    <script src="js/users.js"></script>
+    <script src="js/account.js"></script>
+    <script src="js/footer.js"></script>
+</body>
+</html>

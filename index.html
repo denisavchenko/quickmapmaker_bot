@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание карт онлайн</title>
+    
+    <!-- Подключение CSS файлов -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+    
+    <!-- Подключение Leaflet и других библиотек -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/mapbox-gl@2.15.0/dist/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/mapbox-gl-leaflet/leaflet-mapbox-gl.js"></script>
+    <link href="https://unpkg.com/mapbox-gl@2.15.0/dist/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/leaflet-image@0.4.0/leaflet-image.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">/m</div>
+            <h1 class="title">создание карт онлайн</h1>
+        </div>
+        
+        <input type="text" class="search-input" placeholder="Введите текст...">
+        
+        <div class="tools-section">
+            <div class="tools-container">
+                <div class="tool-item">
+                    <button class="tool-button">
+                        <div class="tool-icon"><i class="fi fi-rr-draw-square"></i></div>
+                    </button>
+                    <div class="tool-name">Полигоны</div>
+                </div>
+                
+                <div class="tool-item">
+                    <button class="tool-button">
+                        <div class="tool-icon"><i class="fi fi-rr-bullet"></i></div>
+                    </button>
+                    <div class="tool-name">Точки</div>
+                </div>
+                
+                <!-- <div class="tool-item">
+                    <button class="tool-button">
+                        <div class="tool-icon"><i class="fi fi-rr-plus-small"></i></div>
+                    </button>
+                    <div class="tool-name">Ещё..</div>
+                </div> -->
+            </div>
+            
+            <h2 class="section-title">Масштаб</h2>
+            
+            <div class="tools-container" id="scale-tools">
+                <div class="tool-item">
+                    <button class="tool-button" data-zoom="3">
+                        <div class="tool-icon"><i class="fi fi-rr-earth-americas"></i></div>
+                    </button>
+                    <div class="tool-name">Страна</div>
+                </div>
+                
+                <!-- Кнопка региона -->
+                <div class="tool-item">
+                    <button class="tool-button" data-zoom="6">
+                        <div class="tool-icon"><i class="fi fi-rr-object-subtract"></i></div>
+                    </button>
+                    <div class="tool-name">Регион</div>
+                </div>
+                
+                <!-- Кнопка города -->
+                <div class="tool-item">
+                    <button class="tool-button" data-zoom="10">
+                        <div class="tool-icon"><i class="fi fi-rs-building"></i></div>
+                    </button>
+                    <div class="tool-name">Город</div>
+                </div>
+                
+                <div class="tool-item">
+                    <button class="tool-button" data-zoom="15">
+                        <div class="tool-icon"><i class="fi fi-rr-bench-tree"></i></div>
+                    </button>
+                    <div class="tool-name">Улица</div>
+                </div>
+                
+                <!-- <div class="tool-item">
+                    <button class="tool-button">
+                        <div class="tool-icon"><i class="fi fi-rr-plus-small"></i></div>
+                    </button>
+                    <div class="tool-name">Ещё..</div>
+                </div> -->
+            </div>
+            
+            <h2 class="section-title">Дизайн</h2>
+            
+            <div class="tools-container" id="design-tools">
+
+                <div class="tool-item">
+                    <button class="tool-button" data-style="yandex_maps">
+                        <div class="tool-icon">
+                            <img src="icon/yandex.png" alt="Yandex Maps" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Yandex Maps</div>
+                </div>
+
+                <div class="tool-item">
+                    <button class="tool-button" data-style="google_maps">
+                        <div class="tool-icon">
+                            <img src="icon/google.png" alt="google_maps" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Google</div>
+                </div>
+
+                <div class="tool-item">
+                    <button class="tool-button" data-style="OSM">
+                        <div class="tool-icon">
+                            <img src="icon/osm.png" alt="OSM" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">OSM</div>
+                </div>
+                <div class="tool-item">
+                    <button class="tool-button" data-style="sateline">
+                        <div class="tool-icon">
+                            <img src="icon/sateline.png" alt="sateline" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Спутник</div>
+                </div>
+                <div class="tool-item">
+                    <button class="tool-button" data-style="sateline_night">
+                        <div class="tool-icon">
+                            <img src="icon/sateline.png" alt="sateline" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Спутник ночной</div>
+                </div>
+                <div class="tool-item">
+                    <button class="tool-button" data-style="Dark_theme">
+                        <div class="tool-icon">BLACK</div>
+                    </button>
+                    <div class="tool-name">Тёмная тема</div>
+                </div>
+                <div class="tool-item">
+                    <button class="tool-button" data-style="White_theme">
+                        <div class="tool-icon">WHITE</div>
+                    </button>
+                    <div class="tool-name">Светлая тема</div>
+                </div>
+
+                <!-- Стили для редактирования: -->
+                <div class="tool-item">
+                    <button class="tool-button" data-style="RIK_facts">
+                        <div class="tool-icon">
+                            <img src="icon/facts.png" alt="RIK_facts" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Факты</div>
+                </div>
+
+                <div class="tool-item">
+                    <button class="tool-button" data-style="RIK_prime">
+                        <div class="tool-icon">
+                            <img src="icon/prime.png" alt="RIK_prime" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Прайм</div>
+                </div>
+
+                <div class="tool-item">
+                    <button class="tool-button" data-style="RIK_news">
+                        <div class="tool-icon">
+                            <img src="icon/news.png" alt="RIK_news" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Новости</div>
+                </div>
+
+                <div class="tool-item">
+                    <button class="tool-button" data-style="RIK_azia">
+                        <div class="tool-icon">
+                            <img src="icon/azia.png" alt="RIK_azia" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Азия</div>
+                </div>
+
+                <div class="tool-item">
+                    <button class="tool-button" data-style="RIK_vopros">
+                        <div class="tool-icon">
+                            <img src="icon/vopros.png" alt="RIK_vopros" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Вопрос Науки</div>
+                </div>
+
+                <div class="tool-item">
+                    <button class="tool-button" data-style="RIK_gortex">
+                        <div class="tool-icon">
+                            <img src="icon/gortex.png" alt="RIK_gortex" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Гортех</div>
+                </div>
+
+                <div class="tool-item">
+                    <button class="tool-button" data-style="RIK_stop">
+                        <div class="tool-icon">
+                            <img src="icon/stop.png" alt="RIK_stop" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Стопфейк</div>
+                </div>
+
+
+                <div class="tool-item">
+                    <button class="tool-button" data-style="RIK_m24">
+                        <div class="tool-icon">
+                            <img src="icon/m24.png" alt="RIK_m24" style="width: 70%; height: 60%;">
+                        </div>
+                    </button>
+                    <div class="tool-name">Москва 24</div>
+                </div>                
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        
+        <!-- Список объектов на карте -->
+        <div class="objects-container">
+            <h2 class="objects-title">Объекты</h2>
+            <div class="objects-list" id="objects-list">
+                <!-- Здесь будут отображаться объекты -->
+                <div class="objects-empty" id="objects-empty">Добавьте объекты на карту</div>
+                <!-- Пример объекта (будет скрыт по умолчанию)-->
+                <div class="object-item" style="display: none;">
+                    <div class="object-number">1</div>
+                    <div class="object-name">Москва</div>
+                    <div class="object-region">Московская обл.</div>
+                    <div class="object-type">точка</div>
+                    <button class="object-remove">×</button>
+                </div>
+            </div>
+            <button class="clear-objects" id="clear-objects" style="display: none;">очистить данные</button>
+        </div>
+        
+        <!-- Кнопка сохранения карты -->
+        <button class="save-button" id="save-map">сохранить карту</button>
+        
+        <!-- Кнопки сохранения в историю и экспорта -->
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <!-- <button class="save-button half-width gray-button" id="save-history">сохранить в историю</button>
+            <button class="save-button half-width gray-button" id="export-map">экспортировать</button> -->
+        </div>
+    </div>
+    
+    <!-- Подключение JavaScript файлов -->
+    <script src="js/main.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/footer.js"></script>
+</body>
+</html>

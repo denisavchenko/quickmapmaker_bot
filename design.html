@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дизайн карты</title>
+    
+    <!-- Подключение CSS файлов -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="https://unpkg.com/mapbox-gl@2.15.0/dist/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+    
+    <!-- Update the script loading order -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/mapbox-gl@2.15.0/dist/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/mapbox-gl-leaflet/leaflet-mapbox-gl.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/leaflet-image@0.4.0/leaflet-image.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    
+    <!-- Подключение пользовательских скриптов -->
+    <script src="js/main.js"></script>
+    <script src="js/editstyle.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/footer.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">/m</div>
+            <h1 class="title">создание карт онлайн</h1>
+        </div>
+        
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        
+        <!-- Список объектов на карте -->
+        <div class="objects-container">
+            <h2 class="objects-title">Объекты</h2>
+            <div class="objects-list" id="objects-list">
+                <div class="objects-empty" id="objects-empty">Добавьте объекты на карту</div>
+            </div>
+        </div>
+
+        <!-- Список дизайна объектов -->
+        <div class="design-container">
+            <h2 class="design-title">Дизайн</h2>
+            <div class="design-list" id="design-list">
+                <div class="design-empty" id="design-empty">Выберите объект для настройки дизайна</div>
+            </div>
+        </div>
+        
+        <!-- Кнопка сохранения карты -->
+        <!-- Кнопки сохранения в историю и экспорта -->
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <button class="save-button half-width" id="save-map">сохранить карту</button>
+            <button class="save-button half-width gray-button" id="save-history">сохранить в историю</button>
+        </div>
+    </div>
+    
+    <!-- Подключение JavaScript файлов -->
+    <script src="js/main.js"></script>
+    <script src="js/editstyle.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/footer.js"></script>
+</body>
+</html>

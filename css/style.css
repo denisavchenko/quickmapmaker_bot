@@ -1,0 +1,1100 @@
+:root {
+    --primary-color: #3366FF;
+    --background-color: #000000;
+    --text-color: #FFFFFF;
+    --secondary-bg-color: #1A1A1A;
+    --button-bg-color: #1A1A1A;
+    --button-active-bg-color: #3366FF;
+    --button-text-color: #FFFFFF;
+    --map-bg-color: #1A1A1A;
+    --water-color: #00D1FF;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 100%;
+    padding: 15px;
+    padding-bottom: 80px; /* Для нижнего меню */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #1A1A1A;
+    color: var(--text-color);
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.tools-section {
+    margin-bottom: 20px;
+}
+
+.tools-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 60px;
+}
+
+.tool-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: var(--button-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--button-text-color);
+    border: none;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.tool-button.active {
+    background-color: var(--button-active-bg-color);
+}
+
+.tool-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.tool-name {
+    font-size: 12px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+.map-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Это создаст квадратный контейнер */
+    background-color: var(--map-bg-color);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Стили для списка объектов */
+.objects-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.objects-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.objects-list {
+    background-color: var(--secondary-bg-color);
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.objects-empty {
+    color: #888;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.object-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+.object-item:last-child {
+    border-bottom: none;
+}
+
+.object-number {
+    width: 30px;
+    color: #888;
+}
+
+.object-name {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.object-region {
+    color: #888;
+    padding: 0 10px;
+}
+
+.object-type {
+    color: #888;
+    width: 60px;
+    text-align: center;
+}
+
+.object-remove {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.clear-objects {
+    text-align: center;
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Стили для кнопки сохранения */
+.save-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #333;
+    z-index: 1000;
+}
+
+.footer-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    text-decoration: none;
+    width: 50%;
+    height: 100%;
+}
+
+.footer-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-icon i {
+    font-size: 20px; /* Размер иконки */
+}
+
+.footer-text {
+    font-size: 12px;
+}
+
+:root {
+    --primary-color: #3366FF;
+    --background-color: #000000;
+    --text-color: #FFFFFF;
+    --secondary-bg-color: #1A1A1A;
+    --button-bg-color: #1A1A1A;
+    --button-active-bg-color: #3366FF;
+    --button-text-color: #FFFFFF;
+    --map-bg-color: #1A1A1A;
+    --water-color: #00D1FF;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 100%;
+    padding: 15px;
+    padding-bottom: 80px; /* Для нижнего меню */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #1A1A1A;
+    color: var(--text-color);
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.tools-section {
+    margin-bottom: 20px;
+}
+
+.tools-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 60px;
+}
+
+.tool-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: var(--button-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--button-text-color);
+    border: none;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.tool-button.active {
+    background-color: var(--button-active-bg-color);
+}
+
+.tool-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.tool-name {
+    font-size: 12px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+.map-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Это создаст квадратный контейнер */
+    background-color: var(--map-bg-color);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Стили для списка объектов */
+.objects-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.objects-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.objects-list {
+    background-color: var(--secondary-bg-color);
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.objects-empty {
+    color: #888;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.object-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+.object-item:last-child {
+    border-bottom: none;
+}
+
+.object-number {
+    width: 30px;
+    color: #888;
+}
+
+.object-name {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.object-region {
+    color: #888;
+    padding: 0 10px;
+}
+
+.object-type {
+    color: #888;
+    width: 60px;
+    text-align: center;
+}
+
+.object-remove {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.clear-objects {
+    text-align: center;
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Стили для кнопки сохранения */
+.save-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #333;
+    z-index: 1000;
+}
+
+.footer-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    text-decoration: none;
+    width: 50%;
+    height: 100%;
+}
+
+.footer-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-icon i {
+    font-size: 20px; /* Размер иконки */
+}
+
+.footer-text {
+    font-size: 12px;
+}
+
+.tool-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.tool-icon i {
+    font-size: 24px; /* Размер иконки */
+}
+.tool-button:active {
+    transform: scale(0.90);
+}
+
+.save-button:active {
+    transform: scale(0.98);
+}
+
+.footer-button:active {
+    transform: scale(0.95);
+}
+/* Стили для списка дизайна */
+.design-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.design-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.design-list {
+    background-color: var(--secondary-bg-color);
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.design-empty {
+    color: #888;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.design-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Обновленные стили для элементов дизайна */
+.design-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #333;
+    gap: 10px;
+}
+
+.design-params {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.design-copy, .design-paste {
+    padding: 6px 12px;
+    background-color: #3366FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.design-copy:hover, .design-paste:hover {
+    background-color: #2255EE;
+}
+
+.design-paste:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    z-index: 1000;
+    transition: transform 0.3s ease-out;
+}
+
+.notification.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+.param-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.param-label {
+    color: #888;
+    font-size: 14px;
+    min-width: 110px;
+}
+
+.param-slider {
+    flex-grow: 1;
+    height: 6px;
+    background: #444;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+.param-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3366FF;
+    cursor: pointer;
+}
+
+.param-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3366FF;
+    cursor: pointer;
+    border: none;
+}
+
+.param-value {
+    color: #fff;
+    font-size: 14px;
+    min-width: 40px;
+    text-align: right;
+}
+
+.color-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-label {
+    color: #888;
+    font-size: 14px;
+    min-width: 70px;
+}
+
+.color-preview {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid #444;
+}
+
+.color-value {
+    background: none;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #888;
+    padding: 4px 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.color-value:hover {
+    border-color: #666;
+    color: #fff;
+}
+
+.color-picker {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    pointer-events: none;
+}
+
+.design-type {
+    color: #888;
+    font-size: 14px;
+    padding: 4px 8px;
+    background: #1A1A1A;
+    border-radius: 4px;
+}
+
+.color-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-group span {
+    color: #888;
+    font-size: 14px;
+}
+
+.color-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.color-box:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.color-preview {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.color-picker {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+.design-number {
+    color: #888;
+    min-width: 24px;
+}
+
+.design-name {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.color-label {
+    color: #888;
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+.color-preview {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.color-code {
+    font-size: 13px;
+    color: #888;
+    cursor: pointer;
+    min-width: 70px;
+}
+
+.color-picker {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+.design-type {
+    color: #888;
+    font-size: 13px;
+    padding: 4px 8px;
+}
+
+.design-remove {
+    display: none; /* Скрываем кнопку удаления */
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.design-remove:hover {
+    opacity: 1;
+}
+
+.design-item:last-child {
+    border-bottom: none;
+}
+
+.design-number {
+    width: 30px;
+    color: #888;
+}
+
+.design-name {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.design-color-fill {
+    width: 80px;
+    padding: 5px;
+    background: none;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.design-color-stroke {
+    width: 80px;
+    padding: 5px;
+    background: none;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.design-type {
+    color: #888;
+    width: 60px;
+    text-align: center;
+}
+
+.design-remove {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.object-item {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.object-item:hover {
+    background-color: var(--button-bg-color);
+}
+
+.object-item.selected {
+    background-color: var(--button-active-bg-color);
+}
+/* Стили для контейнера кнопок */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Стили для кнопок половинной ширины */
+.half-width {
+    width: 48%;
+}
+
+/* Стили для серой кнопки */
+.gray-button {
+    background-color: #777777;
+}
+
+.history-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.history-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.history-list {
+    background-color: var(--secondary-bg-color);
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.history-empty {
+    color: #888;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.history-item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.history-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.history-date {
+    color: #888;
+    font-size: 14px;
+}
+
+.history-info {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.history-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.history-load, .history-delete {
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.history-load {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.history-delete {
+    background-color: transparent;
+    color: #888;
+    border: 1px solid #333;
+}
+
+.half-width {
+    width: 48%;
+    display: inline-block;
+}
+
+.gray-button {
+    background-color: #333;
+}
+
+.auth-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.form-group label {
+    font-weight: bold;
+}
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #1A1A1A;
+    color: var(--text-color);
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.auth-btn {
+    padding: 10px;
+    background-color: #3366FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+}
+.auth-btn:hover {
+    background-color: #3366FF;
+}
+.error-message {
+    color: red;
+    margin-top: 10px;
+    display: none;
+}
+.user-info {
+    display: none;
+}
+.logout-btn {
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
